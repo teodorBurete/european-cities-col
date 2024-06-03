@@ -1,0 +1,18 @@
+{
+    "id": 60,
+    "impact_country": "Romania",
+    "population": 19473936,
+    "capital": "Bucharest",
+    "area": 237500.0,
+    "currency_code": "RON",
+    "currency_name": "Leu",
+    "phone": 40,
+    "iso_a2": "RO",
+    "economics":{
+        "inflation":5.9,
+        "gdp_growth_rate":0.5,
+        "unemployment_rate":5.3,
+        "cpi":248,
+        "home_ownership_rate":95.6
+    }
+}

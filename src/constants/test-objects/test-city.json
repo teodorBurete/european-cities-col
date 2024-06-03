@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "name": "Bucharest",
+  "countryCode": "RO",
+  "population": 29535,
+  "area": 1259,
+  "annualPopulationChange": -0.2,
+  "rankByPopulation": 9,
+  "gdp": 100,
+  "capital": true
+}
