@@ -10,11 +10,12 @@ import Header from "../commons/Header";
 import NavBar from "../commons/NavBar";
 import testCountry from "../../constants/test-objects/test-country-with-economics.json";
 import CountryHeader from "./CountryHeader";
-import PrincipalFields from "./InfoTable";
 import CountryFieldsAccordion from "./CountryFieldsAccordion";
 import Footer from "../commons/Footer";
 import MapComponent from "../commons/MapComponent";
 import CountryCities from "./CountryCities";
+import CountryAbout from "./CountryAbout";
+import countryAboutText from "../../constants/country-details-page/country-about-test.json";
 
 const countryService: ICountryService = new CountryServiceImpl();
 
@@ -58,6 +59,7 @@ const CountryDetail = () => {
             <MapComponent />
           </Box>
           <CountryCities cities={["test1", "test2", "test3"]} />
+          <CountryAbout aboutText={countryAboutText.text} />
         </Box>
       ) : (
         <Text>Country not found</Text>

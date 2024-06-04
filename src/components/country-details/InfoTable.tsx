@@ -1,4 +1,4 @@
-import { Box, HStack, Table, Tbody, Td, Text, Tr, VStack } from "@chakra-ui/react";
+import { Box, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
 
 
 const InfoTable = ({ fields }: { fields: { [key: string]: string | number } }) => (

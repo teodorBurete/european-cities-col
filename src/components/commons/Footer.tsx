@@ -1,6 +1,6 @@
 // components/Footer.tsx
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 const Footer: React.FC = () => {
   return (

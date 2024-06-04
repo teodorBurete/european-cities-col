@@ -10,7 +10,7 @@ const CountryCities: React.FC<CountryCitiesProps> = (
 ) => {
   const { cities } = props;
   return (
-    <Box>
+    <Box mb={10}>
       <Heading marginBottom={10} marginTop={10}>
         Major Cities
       </Heading>

@@ -5,9 +5,15 @@ import CityServiceImpl, {
   ICityService,
 } from "../../api/service/implementation/CityService";
 import CityHeader from "./CityHeader";
-import { Box,Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, HStack, Text } from "@chakra-ui/react";
 import Header from "../commons/Header";
 import NavBar from "../commons/NavBar";
+import InfoTable from "../country-details/InfoTable";
+import fields from "../../constants/city-details-page/table-fields.json";
+import MapComponent from "../commons/MapComponent";
+import CityAbout from "./CityAbout";
+import aboutCity from "../../constants/city-details-page/about.json";
+import Footer from "../commons/Footer";
 
 const cityService: ICityService = new CityServiceImpl();
 
@@ -29,19 +35,31 @@ const CityDetail = () => {
 
   return (
     <Box paddingX={150}>
-    <Header />
-    <NavBar />
-    <Box p={4}>
-      <CityHeader
-        cityName={'Bucuresti'}
-        countryName={'Romania'}
-        flagUrl={"https://www.worldometers.info//img/flags/small/tn_ro-flag.gif"}
-      />
-      {/* Add more city details here */}
-      <Box mt={4}>
-        <Text>More information about the city...</Text>
+      <Header />
+      <NavBar />
+      <Box p={4}>
+        <CityHeader
+          cityName={"Bucuresti"}
+          countryName={"Romania"}
+          flagUrl={
+            "https://www.worldometers.info//img/flags/small/tn_ro-flag.gif"
+          }
+        />
+        <Grid h="350px" templateColumns="repeat(3, 1fr)" gap="14">
+          <GridItem colSpan={1} bg="">
+            <InfoTable fields={fields} />
+          </GridItem>
+          <GridItem colSpan={1} bg="">
+            <Box ml={4} height="100%">
+              <CityAbout aboutText={aboutCity.about} />
+            </Box>
+          </GridItem>
+          <GridItem colSpan={1} bg="">
+            <MapComponent />
+          </GridItem>
+        </Grid>
       </Box>
-    </Box>
+      <Footer />
     </Box>
   );
 };

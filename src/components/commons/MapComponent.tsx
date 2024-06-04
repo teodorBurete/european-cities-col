@@ -16,7 +16,7 @@ const MapComponent = () => {
   const position: [number, number] = [45.94, 24.96]; // Example position (latitude, longitude)
 
   return (
-    <Box height="400px" width="100%">
+    <Box height="100%" width="100%">
       <MapContainer
         center={position}
         zoom={6}
