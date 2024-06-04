@@ -1,5 +1,5 @@
-import { axiosClient } from "../../Api";
-import { ICity } from "../model/city/ICity";
+import { axiosClient } from "../Api";
+import { ICity } from "./model/city/ICity";
 
 export interface ICityService {
   getCityById(cityId: string | undefined): Promise<{ data: ICity }>;

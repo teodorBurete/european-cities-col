@@ -1,5 +1,6 @@
-import { ICountry } from "../model/country/ICountry";
-import { axiosClient } from "../../Api";
+import { ICountry } from "./model/country/ICountry";
+import { axiosClient } from "../Api";
+import searchCountries from "../../constants/test-objects/searchCountries.json";
 
 export interface ICountryService {
   getCountryByCode(
@@ -35,6 +36,23 @@ export default class CountryServiceImpl implements ICountryService {
     } catch (error) {
       console.error(`Error fetching country with code ${countryCode}: `, error);
       return { data: {} as ICountry };
+    }
+  }
+
+  async searchCountryByName(
+    countryName: string
+  ): Promise<{ data: ICountry[] }> {
+    try {
+      // const response = await axiosClient.get(`/countries/name/${countryName}`);
+      const response = searchCountries;
+      if (response && response.data) {
+        return response as { data: ICountry[] };
+      } else {
+        return { data: [] as ICountry[] };
+      }
+    } catch (error) {
+      console.error(`Error fetching country with name ${countryName}: `, error);
+      return { data: [] as ICountry[] };
     }
   }
 }

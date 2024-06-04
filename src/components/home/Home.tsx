@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
-import CountryServiceImpl, { ICountryService } from "../../api/service/implementation/CountryService";
+import CountryServiceImpl, {
+  ICountryService,
+} from "../../api/service/CountryService";
 import { ICountry } from "../../api/service/model/country/ICountry";
 import { Box, Spinner } from "@chakra-ui/react";
 import SearchBar from "../commons/SearchBar";
@@ -45,11 +47,9 @@ const Home = () => {
   return loadingItems ? (
     <Spinner></Spinner>
   ) : (
-    <Box paddingX={150} >
+    <Box paddingX={150}>
       <Header />
       <NavBar />
-
-      <SearchBar onSearch={handleSearch} />
     </Box>
   );
 };

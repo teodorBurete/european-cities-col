@@ -1,0 +1,108 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "impact_country": "Romania"
+        },
+        {
+            "id": 2,
+            "impact_country": "Moldova"
+        },
+        {
+            "id": 3,
+            "impact_country": "Ucraina"
+        },
+        {
+            "id": 4,
+            "impact_country": "Rusia"
+        },
+        {
+            "id": 5,
+            "impact_country": "Bulgaria"
+        },
+        {
+            "id": 6,
+            "impact_country": "Serbia"
+        },
+        {
+            "id": 7,
+            "impact_country": "Ungaria"
+        },
+        {
+            "id": 8,
+            "impact_country": "Slovacia"
+        },
+        {
+            "id": 9,
+            "impact_country": "Cehia"
+        },
+        {
+            "id": 10,
+            "impact_country": "Polonia"
+        },
+        {
+            "id": 11,
+            "impact_country": "Lituania"
+        },
+        {
+            "id": 12,
+            "impact_country": "Letonia"
+        },
+        {
+            "id": 13,
+            "impact_country": "Estonia"
+        },
+        {
+            "id": 14,
+            "impact_country": "Finlanda"
+        },
+        {
+            "id": 15,
+            "impact_country": "Suedia"
+        },
+        {
+            "id": 16,
+            "impact_country": "Norvegia"
+        },
+        {
+            "id": 17,
+            "impact_country": "Danemarca"
+        },
+        {
+            "id": 18,
+            "impact_country": "Germania"
+        },
+        {
+            "id": 19,
+            "impact_country": "Olanda"
+        },
+        {
+            "id": 20,
+            "impact_country": "Belgia"
+        },
+        {
+            "id": 21,
+            "impact_country": "Luxemburg"
+        },
+        {
+            "id": 22,
+            "impact_country": "Franta"
+        },
+        {
+            "id": 23,
+            "impact_country": "Spania"
+        },
+        {
+            "id": 24,
+            "impact_country": "Portugalia"
+        },
+        {
+            "id": 25,
+            "impact_country": "Italia"
+        },
+        {
+            "id": 26,
+            "impact_country": "Grecia"
+        }
+    ]
+}

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ICity } from "../../api/service/model/city/ICity";
 import CityServiceImpl, {
   ICityService,
-} from "../../api/service/implementation/CityService";
+} from "../../api/service/CityService";
 import CityHeader from "./CityHeader";
 import { Box, Flex, Grid, GridItem, HStack, Text } from "@chakra-ui/react";
 import Header from "../commons/Header";

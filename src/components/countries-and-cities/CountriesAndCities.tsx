@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ICountry } from "../../api/service/model/country/ICountry";
 import CountryServiceImpl, {
   ICountryService,
-} from "../../api/service/implementation/CountryService";
+} from "../../api/service/CountryService";
 import { Box, SimpleGrid, Spinner, Link } from "@chakra-ui/react";
 import { title } from "process";
 import { NavLink } from 'react-router-dom';

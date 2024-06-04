@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { Box, Spinner, Heading, Text, List, ListItem } from "@chakra-ui/react";
 import CountryServiceImpl, {
   ICountryService,
-} from "../../api/service/implementation/CountryService";
+} from "../../api/service/CountryService";
 import { ICountry } from "../../api/service/model/country/ICountry";
 import Header from "../commons/Header";
 import NavBar from "../commons/NavBar";
