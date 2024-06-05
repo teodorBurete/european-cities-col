@@ -22,11 +22,12 @@ interface Location {
 
 interface MapComponentProps {
   cities: Location[];
+  zoom?: number | 6;
 }
 const MapComponent: React.FC<MapComponentProps> = (
   props: MapComponentProps
 ) => {
-  const { cities } = props;
+  const { cities, zoom } = props;
   const centerPosition: [number, number] = [45.94, 24.96]; // Example position (latitude, longitude)
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ const MapComponent: React.FC<MapComponentProps> = (
     <Box height="100%" width="100%">
       <MapContainer
         center={centerPosition}
-        zoom={6}
+        zoom={zoom}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
