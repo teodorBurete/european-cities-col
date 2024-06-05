@@ -8,6 +8,7 @@ import CountryDetail from "./components/country-details/CountryDetail";
 import CityDetail from "./components/city-details/CityDetail";
 import 'leaflet/dist/leaflet.css';
 import CostOfLiving from "./components/cost-of-living/CostOfLiving";
+import CityPrices from "./components/city-prices/CityPrices";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
@@ -16,6 +17,7 @@ export const App = () => (
         <Route index element={<Home />} />
         <Route path="/countries-and-cities" element={<CitiesAndCountriesList />} />
         <Route path="/cost-of-living" element={<CostOfLiving />} />
+        <Route path="/cost-of-living/cities/1" element={<CityPrices />} />
         <Route path="/countries/:countryCode" element={<CountryDetail />} /> 
         <Route path="/cities/:cityId" element={<CityDetail />} /> 
         <Route path="*" element={<NotFound />} />

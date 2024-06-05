@@ -4,7 +4,7 @@ import CountryServiceImpl, {
 } from "../../api/service/CountryService";
 import { ICountry } from "../../api/service/model/country/ICountry";
 import { Box, Spinner } from "@chakra-ui/react";
-import SearchBar from "../commons/SearchBar";
+import SearchBar from "../cost-of-living/SearchBar";
 import NavBar from "../commons/NavBar";
 import Header from "../commons/Header";
 

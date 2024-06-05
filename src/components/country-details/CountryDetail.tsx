@@ -16,6 +16,7 @@ import MapComponent from "../commons/MapComponent";
 import CountryCities from "./CountryCities";
 import CountryAbout from "./CountryAbout";
 import countryAboutText from "../../constants/country-details-page/country-about-test.json";
+import testLocations from "../../constants/test-objects/test-locations.json";
 
 const countryService: ICountryService = new CountryServiceImpl();
 
@@ -56,7 +57,7 @@ const CountryDetail = () => {
             <Box>
               <CountryFieldsAccordion country={country} />
             </Box>
-            <MapComponent />
+            <MapComponent cities={testLocations} />
           </Box>
           <CountryCities cities={["test1", "test2", "test3"]} />
           <CountryAbout aboutText={countryAboutText.text} />

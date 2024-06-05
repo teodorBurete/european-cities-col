@@ -1,19 +1,23 @@
-import { Box, Flex, Heading } from "@chakra-ui/react";
+import { Text, Flex, Heading, Box } from "@chakra-ui/react";
 import Header from "../commons/Header";
 import NavBar from "../commons/NavBar";
 import Footer from "../commons/Footer";
-import SearchBar from "../commons/SearchBar";
+import SearchBar from "./SearchBar";
+import MapComponent from "../commons/MapComponent";
+import testLocations from "../../constants/test-objects/test-locations.json";
 
 const CostOfLiving = () => {
   return (
-    <Flex height="100%" direction="column" paddingX={150}>
+    <Flex  direction="column" paddingX={150}>
       <Header />
       <NavBar />
       <Heading as="h1" size="xl" mb={2}>
         Cost of Living
       </Heading>
-
       <SearchBar />
+      <Box flex="1" height="400px" width="400px" mt={4} position="relative">
+        <MapComponent cities={testLocations} />
+      </Box>
 
       <Footer />
     </Flex>

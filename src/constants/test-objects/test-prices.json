@@ -1,0 +1,18 @@
+[
+  {
+    "category": "Restaurants",
+    "items": {
+      "Meal, Inexpensive Restaurant": 50,
+      "Domestic Beer": 10,
+      "Coke/Pepsi": 20
+    }
+  },
+  {
+    "category": "Markets",
+    "items": {
+      "Milk (regular), (1 liter)": 8,
+      "Loaf of Fresh White Bread (500g)": 2,
+      "Domestic Beer": 5
+    }
+  }
+]

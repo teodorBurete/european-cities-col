@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { ICity } from "../../api/service/model/city/ICity";
-import CityServiceImpl, {
-  ICityService,
-} from "../../api/service/CityService";
+import CityServiceImpl, { ICityService } from "../../api/service/CityService";
 import CityHeader from "./CityHeader";
 import { Box, Flex, Grid, GridItem, HStack, Text } from "@chakra-ui/react";
 import Header from "../commons/Header";
@@ -14,6 +12,7 @@ import MapComponent from "../commons/MapComponent";
 import CityAbout from "./CityAbout";
 import aboutCity from "../../constants/city-details-page/about.json";
 import Footer from "../commons/Footer";
+import testLocations from "../../constants/test-objects/test-locations.json";
 
 const cityService: ICityService = new CityServiceImpl();
 
@@ -55,7 +54,7 @@ const CityDetail = () => {
             </Box>
           </GridItem>
           <GridItem colSpan={1} bg="">
-            <MapComponent />
+            <MapComponent cities={testLocations} />
           </GridItem>
         </Grid>
       </Box>
