@@ -35,41 +35,49 @@ const SearchBar = () => {
   }, [query]);
 
   return (
-    <Box position="relative">
-      <Input
-        placeholder="Search for a country"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-      />
-      {countriesList.length > 0 && (
-        <List
-          mt={2}
-          position="absolute"
-          width="100%"
-          maxHeight="200px"
-          overflowY="auto"
-          border="1px solid"
-          borderColor="gray.200"
-          borderRadius="md"
-          bg="white"
-          zIndex={1}
-        >
-          {countriesList.map((country) => (
-            <LinkBox as="article" key={country.id} _hover={{ bg: "gray.100" }}>
-              <ListItem
-                padding={2}
-                borderBottom="1px solid"
-                borderColor="gray.200"
+    <>
+      <Box position="relative">
+        <Input
+          placeholder="Search for a country"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+      </Box>
+      <Box zIndex={1}>
+        {countriesList.length > 0 && (
+          <List
+            mt={2}
+            position="absolute"
+            width="100%"
+            maxHeight="200px"
+            overflowY="auto"
+            border="1px solid"
+            borderColor="gray.200"
+            borderRadius="md"
+            bg="white"
+            zIndex={1}
+          >
+            {countriesList.map((country) => (
+              <LinkBox
+                as="article"
+                key={country.id}
+                _hover={{ bg: "gray.100" }}
               >
-                <LinkOverlay as={NavLink} to={`/cost-of-living/cities/1`}>
-                  {country.impact_country}
-                </LinkOverlay>
-              </ListItem>
-            </LinkBox>
-          ))}
-        </List>
-      )}
-    </Box>
+                <ListItem
+                  padding={2}
+                  borderBottom="1px solid"
+                  borderColor="gray.200"
+                >
+                  <LinkOverlay as={NavLink} to={`/cost-of-living/cities/1`}>
+                    {country.impact_country}
+                  </LinkOverlay>
+                </ListItem>
+              </LinkBox>
+            ))}
+          </List>
+        )}
+      </Box>
+    </>
   );
 };
 

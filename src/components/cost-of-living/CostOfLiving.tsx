@@ -8,14 +8,14 @@ import testLocations from "../../constants/test-objects/test-locations.json";
 
 const CostOfLiving = () => {
   return (
-    <Flex  direction="column" paddingX={150}>
+    <Flex  direction="column" paddingX={150} h={'100vh'}>
       <Header />
       <NavBar />
       <Heading as="h1" size="xl" mb={2}>
         Cost of Living
       </Heading>
       <SearchBar />
-      <Box flex="1" height="400px" width="400px" mt={4} position="relative">
+      <Box flex="1" maxH="400px" width="400px" mt={4} position="relative" zIndex={0}>
         <MapComponent cities={testLocations} />
       </Box>
 
