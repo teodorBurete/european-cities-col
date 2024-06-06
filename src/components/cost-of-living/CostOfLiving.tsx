@@ -15,7 +15,7 @@ const CostOfLiving = () => {
         Cost of Living
       </Heading>
       <SearchBar />
-      <MapComponent cities={testLocations} height="400px" width="400px"/>
+      <MapComponent zoom={5} cities={testLocations} height="700px" width="1200px" center={[48,11]} />
 
       <Footer />
     </Flex>

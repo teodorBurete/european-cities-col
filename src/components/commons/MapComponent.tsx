@@ -25,19 +25,19 @@ interface MapComponentProps {
   zoom?: number;
   height?: string;
   width?: string;
+  center?: [number, number];
 }
 
 const MapComponent: React.FC<MapComponentProps> = (
   props: MapComponentProps
 ) => {
-  const { cities, zoom, height, width } = props;
-  const centerPosition: [number, number] = [45.94, 24.96]; // Example position (latitude, longitude)
+  const { cities, zoom, height, width, center } = props;
   const navigate = useNavigate();
 
   return (
-    <Box height={height || "100%"} width={width || "100%"} mt={4}>
+    <Box height={height || "100%"} width={width || "100%"} mt={4} zIndex={0}>
       <MapContainer
-        center={centerPosition}
+        center={center || [45.94, 24.96]}
         zoom={zoom || 6}
         style={{ height: "100%", width: "100%" }}
       >

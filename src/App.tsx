@@ -6,20 +6,25 @@ import NotFound from "./components/commons/NotFound";
 import CitiesAndCountriesList from "./components/countries-and-cities/CountriesAndCities";
 import CountryDetail from "./components/country-details/CountryDetail";
 import CityDetail from "./components/city-details/CityDetail";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 import CostOfLiving from "./components/cost-of-living/CostOfLiving";
 import CityPrices from "./components/city-prices/CityPrices";
+import CityComparison from "./components/city-comparison/CityComparison";
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <BrowserRouter >
+    <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="/countries-and-cities" element={<CitiesAndCountriesList />} />
+        <Route
+          path="/countries-and-cities"
+          element={<CitiesAndCountriesList />}
+        />
         <Route path="/cost-of-living" element={<CostOfLiving />} />
+        <Route path="/cost-of-living/comparison" element={<CityComparison />} />
         <Route path="/cost-of-living/cities/1" element={<CityPrices />} />
-        <Route path="/countries/:countryCode" element={<CountryDetail />} /> 
-        <Route path="/cities/:cityId" element={<CityDetail />} /> 
+        <Route path="/countries/:countryCode" element={<CountryDetail />} />
+        <Route path="/cities/:cityId" element={<CityDetail />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -7,8 +7,7 @@ import CountryServiceImpl, {
   ICountryService,
 } from "../../api/service/CountryService";
 import { Box, SimpleGrid, Spinner, Link } from "@chakra-ui/react";
-import { title } from "process";
-import { NavLink } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 import Footer from "../commons/Footer";
 import CountriesAndCitiesHeader from "./CountriesAndCitiesHeader";
 
@@ -44,15 +43,13 @@ const CountriesAndCities = () => {
     <Box paddingX={150}>
       <Header />
       <NavBar />
-      <CountriesAndCitiesHeader/>
+      <CountriesAndCitiesHeader />
       {loadingItems ? (
         <Spinner />
       ) : (
         <SimpleGrid columns={[1, 2, 3]} spacing={4}>
           {countriesList.map((country) => (
-            <Link as={NavLink} to={`/countries/${country.iso_a2}`} key={country.id}>
-              <CountryCard key={country.id} country={country} />
-            </Link>
+            <CountryCard key={country.id} country={country} />
           ))}
         </SimpleGrid>
       )}
