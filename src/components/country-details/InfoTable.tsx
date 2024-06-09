@@ -1,7 +1,8 @@
 import { Box, Table, Tbody, Td, Text, Tr } from "@chakra-ui/react";
+import { ICountryEconomicIndicators } from "../../api/service/model/country/ICountryEconomicIndicators";
 
 
-const InfoTable = ({ fields }: { fields: { [key: string]: string | number } }) => (
+const InfoTable = ({ fields }: { fields: { [key: string]: string | number }|ICountryEconomicIndicators }) => (
   <Box overflowX="auto">
     <Table variant="simple">
       <Tbody>
@@ -16,8 +17,9 @@ const InfoTable = ({ fields }: { fields: { [key: string]: string | number } }) =
   </Box>
 );
 const formatFieldName = (name: string) => {
-  // A simple function to format the field names into a more readable format.
-  return name.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+  return name
+    .replace(/_/g, ' ')               // Inlocuieste "underscore" cu "space."
+    .replace(/\b\w/g, char => char.toUpperCase()); // Inlocuieste prima litera a fiecarui cuvant cu litera mare
 }
 
 export default InfoTable;

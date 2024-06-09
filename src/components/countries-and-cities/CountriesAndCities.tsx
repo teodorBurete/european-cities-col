@@ -7,7 +7,6 @@ import CountryServiceImpl, {
   ICountryService,
 } from "../../api/service/CountryService";
 import { Box, SimpleGrid, Spinner, Link } from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
 import Footer from "../commons/Footer";
 import CountriesAndCitiesHeader from "./CountriesAndCitiesHeader";
 

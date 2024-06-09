@@ -5,9 +5,10 @@ import {
   Link,
   List,
   ListItem,
+  Image,
+  HStack,
 } from "@chakra-ui/react";
 import { ICountry } from "../../../api/service/model/country/ICountry";
-import cities from "../../../constants/test-objects/test-cities.json";
 import { NavLink } from "react-router-dom";
 
 interface CountryCardProps {
@@ -21,17 +22,36 @@ const CountryCard: React.FC<CountryCardProps> = (props: CountryCardProps) => {
       boxShadow="md"
       transition="transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out"
       _hover={{ transform: "scale(1.05)", boxShadow: "xl" }}
+      borderRadius="lg"
+      p={5}
     >
       <CardBody>
-        <Heading as="h3" size="md" mb={4}>
-          <Link as={NavLink} to={`/countries/${country.id}`}>
-            {country.impact_country}
-          </Link>
+        <Heading as="h3" size="md" mb={4} color="blue.600">
+          <HStack spacing={4}>
+            <Image
+              src={
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Flag_of_the_Czech_Republic.svg/1200px-Flag_of_the_Czech_Republic.svg.png"
+              }
+              alt={`${country.impact_country} flag`}
+              boxSize="35px"
+              rounded={100}
+              borderWidth="5px"
+              borderColor="black"
+            />
+            <Link as={NavLink} to={`/countries/${country.id}`}>
+              {country.impact_country}
+            </Link>{" "}
+          </HStack>
         </Heading>
         <List spacing={2}>
-          {cities.map((city) => (
+          {country.cities.map((city) => (
             <ListItem key={city.id}>
-              <Link as={NavLink} to={`/cities/${city.id}`}>
+              <Link
+                as={NavLink}
+                to={`/cities/${city.id}`}
+                fontWeight="bold"
+                color="blue.500"
+              >
                 {city.name}
               </Link>
             </ListItem>

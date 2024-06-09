@@ -1,8 +1,9 @@
 import { Box, Button, Flex, Heading, Link } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
+import { ICity } from "../../api/service/model/city/ICity";
 
 interface CountryCitiesProps {
-  cities: Array<string>;
+  cities: ICity[];
 }
 
 const CountryCities: React.FC<CountryCitiesProps> = (
@@ -16,8 +17,8 @@ const CountryCities: React.FC<CountryCitiesProps> = (
       </Heading>
       <Flex justify={"space-between"}>
         {cities.map((city) => (
-          <Box margin={5} as={NavLink} to="/cities/1" flex="1">
-            <Button width="100%">City 1</Button>
+          <Box margin={5} as={NavLink} to={`/cities/${city.id}`} flex="1">
+            <Button width="100%">{city.name}</Button>
           </Box>
         ))}
       </Flex>

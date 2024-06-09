@@ -1,14 +1,12 @@
-// components/CountryDetail.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Spinner, Heading, Text, List, ListItem } from "@chakra-ui/react";
+import { Box, Spinner, Text } from "@chakra-ui/react";
 import CountryServiceImpl, {
   ICountryService,
 } from "../../api/service/CountryService";
 import { ICountry } from "../../api/service/model/country/ICountry";
 import Header from "../commons/Header";
 import NavBar from "../commons/NavBar";
-import testCountry from "../../constants/test-objects/test-country-with-economics.json";
 import CountryHeader from "./CountryHeader";
 import CountryFieldsAccordion from "./CountryFieldsAccordion";
 import Footer from "../commons/Footer";
@@ -21,20 +19,34 @@ import testLocations from "../../constants/test-objects/test-locations.json";
 const countryService: ICountryService = new CountryServiceImpl();
 
 const CountryDetail = () => {
-  const { countryCode } = useParams<{ countryCode: string }>();
+  const { countryId } = useParams<{ countryId: string }>();
   const [loadingItems, setLoadingItems] = useState<boolean>(false); //TODO
-  const [country, setCountry] = useState<ICountry>(testCountry);
+  const [country, setCountry] = useState<ICountry | null>(null);
 
-  // useEffect(() => {
-  //   const fetchCountry = async () => {
-  //     setLoadingItems(true);
-  //     const response = await countryService.getCountryByCode(countryCode);
-  //     setCountry(response.data);
-  //     setLoadingItems(false);
-  //   };
+  useEffect(() => {
+    let isMounted = true;
 
-  //   fetchCountry();
-  // }, [countryCode]);
+    const fetchCountry = async () => {
+      setLoadingItems(true);
+      const response = await countryService.getCountriesById(countryId);
+      if (!isMounted) return;
+
+      if (response.data) {
+        setCountry(response.data);
+      } else {
+        console.error("City not found");
+        setCountry(null);
+      }
+      console.log(response);
+
+      setLoadingItems(false);
+    };
+
+    fetchCountry();
+    return () => {
+      isMounted = false;
+    };
+  }, [countryId]);
 
   return (
     <Box paddingX={150}>
@@ -55,11 +67,13 @@ const CountryDetail = () => {
             paddingY={4}
           >
             <Box>
-              <CountryFieldsAccordion country={country} />
+              <CountryFieldsAccordion
+                country={country}
+              />
             </Box>
             <MapComponent cities={testLocations} />
           </Box>
-          <CountryCities cities={["test1", "test2", "test3"]} />
+          <CountryCities cities={country.cities} />
           <CountryAbout aboutText={countryAboutText.text} />
         </Box>
       ) : (

@@ -8,4 +8,6 @@ export interface ICity {
   rankByPopulation: number;
   gdp: number;
   capital: boolean;
+  latitude:number;
+  longitude:number;
 }

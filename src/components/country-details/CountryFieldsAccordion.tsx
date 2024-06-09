@@ -18,6 +18,7 @@ const CountryFieldsAccordion: React.FC<CountryFieldsAccordionProps> = (
 ) => {
   const { country } = props;
   const density = country.population / country.area;
+  const ecIndicators = country.economic_indicators;
 
   const accordionItem = {
     title: "General Information",
@@ -30,20 +31,22 @@ const CountryFieldsAccordion: React.FC<CountryFieldsAccordionProps> = (
       "Phone Prefix": country.phone,
     },
   };
-  
+
   const accordionItem2 = {
-    title: "General Information",
-    fields: {
-      Population: country.population,
-      Area: `${country.area} km²`,
-      Density: `${density.toFixed(0)} people/km²`,
-      "Capital City": country.capital,
-      Currency: country.currency_name,
-      "Phone Prefix": country.phone,
-    },
+    title: "Economic Indicators",
+    // fields: {
+    //   GDP: ecIndicators.gdp,
+    //   "Minimum Wage": ecIndicators.minimum_wage,
+    //   "Inflation Rate": ecIndicators.inflation,
+    //   "GDP Growth Rate": ecIndicators.gdp_growth_rate,
+    //   "Unemployment Rate": ecIndicators.unemployment_rate,
+    //   CPI: ecIndicators.cpi,
+    //   "Home Ownership Rate": ecIndicators.home_ownership_rate,
+    // }
+    fields: ecIndicators,
   };
 
-  const itemsArray = [accordionItem,accordionItem2];
+  const itemsArray = [accordionItem, accordionItem2];
   return (
     <Accordion defaultIndex={[0]} w="100%" maxW="800px">
       {itemsArray.map((item) => (

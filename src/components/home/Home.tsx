@@ -1,55 +1,173 @@
-import { useEffect, useState } from "react";
-import CountryServiceImpl, {
-  ICountryService,
-} from "../../api/service/CountryService";
-import { ICountry } from "../../api/service/model/country/ICountry";
-import { Box, Spinner } from "@chakra-ui/react";
-import SearchBar from "../cost-of-living/SearchBar";
+import {
+  Box,
+  Divider,
+  Image,
+  Heading,
+  Text,
+  VStack,
+  SimpleGrid,
+  Link,
+  Icon,
+} from "@chakra-ui/react";
 import NavBar from "../commons/NavBar";
 import Header from "../commons/Header";
-
-const countryService: ICountryService = new CountryServiceImpl();
+import Footer from "../commons/Footer";
+import { NavLink } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const Home = () => {
-  const [loadingItems, setLoadingItems] = useState<boolean>(true);
-  const [countriesList, setCountriesList] = useState<ICountry[]>(
-    [] as ICountry[]
-  );
-  useEffect(() => {
-    let isMounted = true;
+  const popularCities = [
+    {
+      name: "Berlin",
+      description:
+        "The capital city of Germany, known for its vibrant culture and history.",
+      image: "path_to_berlin_image",
+    },
+    {
+      name: "Paris",
+      description:
+        "The capital of France, famous for its art, fashion, and landmarks.",
+      image: "path_to_paris_image",
+    },
+    {
+      name: "Madrid",
+      description:
+        "The central capital of Spain, renowned for its royal palace and museums.",
+      image: "path_to_madrid_image",
+    },
+  ];
 
-    const fetchItems = async () => {
-      setLoadingItems(true);
-
-      const response = await countryService.getCountries();
-
-      if (!isMounted) return;
-
-      setCountriesList(response.data);
-
-      setLoadingItems(false);
-    };
-    fetchItems();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  const handleSearch = (query: string) => {
-    // Implement the search logic here
-    const filteredCountries = countriesList.filter((country) =>
-      country.impact_country.toLowerCase().includes(query.toLowerCase())
-    );
-    setCountriesList(filteredCountries);
-  };
-
-  return loadingItems ? (
-    <Spinner></Spinner>
-  ) : (
-    <Box paddingX={150}>
-      <Header />
-      <NavBar />
+  return (
+    <Box >
+      <Box paddingX={150}>
+        <Header />
+        <NavBar />
+        <Box mt={10}>
+          <Heading as="h1" size="2xl" mb={6} color="blue.700">
+            Welcome to the European Cities Information Portal!
+          </Heading>
+          <Text fontSize="lg" mb={6}>
+            The purpose of this web application is to group and showcase
+            relevant information about the largest cities in the European Union
+            and their countries!
+          </Text>
+          <Text fontSize="lg" mb={6}>
+            Also, you can use the "Cost of living" functionality in order to
+            check the prices for a large range of goods, services, or utilities
+            in each city, and then compare them.
+          </Text>
+          <Divider mb={10} />
+          <VStack spacing={8} align="start">
+            <Heading as="h2" size="xl" color="blue.700">
+              General Information about the European Union
+            </Heading>
+            <Image
+              src={""}
+              alt="European Union Flag"
+              boxSize="300px"
+              objectFit="contain"
+              mb={6}
+            />
+            <Text fontSize="md" maxW="800px">
+              The European Union (EU) is a political and economic union of 27
+              member states that are located primarily in Europe. Its members
+              have a combined area of 4,233,255.3 km² and an estimated total
+              population of about 447 million. The EU has developed an internal
+              single market through a standardized system of laws that apply in
+              all member states in those matters, and only those matters, where
+              members have agreed to act as one.
+            </Text>
+          </VStack>
+          <Divider mt={10} mb={10} />
+          {/* Popular Cities Section */}
+          <VStack spacing={8} mb={10} align="start">
+            <Heading as="h2" size="xl" color="blue.700">
+              Popular Cities
+            </Heading>
+            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
+              {popularCities.map((city, index) => (
+                <Box
+                  key={index}
+                  p={5}
+                  shadow="md"
+                  borderWidth="1px"
+                  borderRadius="lg"
+                  _hover={{
+                    shadow: "lg",
+                    transform: "scale(1.05)",
+                    transition: "0.3s",
+                  }}
+                >
+                  <Image
+                    src={city.image}
+                    alt={city.name}
+                    boxSize="200px"
+                    objectFit="cover"
+                    mb={4}
+                    borderRadius="md"
+                  />
+                  <Heading as="h3" size="md" mb={2}>
+                    {city.name}
+                  </Heading>
+                  <Text>{city.description}</Text>
+                </Box>
+              ))}
+            </SimpleGrid>
+          </VStack>
+          <Divider mt={10} mb={10} />
+          {/* Quick Links Section */}
+          <VStack spacing={8} mb={10} align="start">
+            <Heading as="h2" size="xl" color="blue.700">
+              Quick Links
+            </Heading>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+              <Box
+                p={5}
+                shadow="md"
+                borderWidth="1px"
+                borderRadius="lg"
+                _hover={{
+                  shadow: "lg",
+                  transform: "scale(1.05)",
+                  transition: "0.3s",
+                }}
+              >
+                <Link
+                  as={NavLink}
+                  to="/cost-of-living"
+                  fontSize="lg"
+                  fontWeight="bold"
+                >
+                  Explore Cost of Living
+                  <Icon as={FaArrowRight} ml={2} />
+                </Link>
+              </Box>
+              <Box
+                p={5}
+                shadow="md"
+                borderWidth="1px"
+                borderRadius="lg"
+                _hover={{
+                  shadow: "lg",
+                  transform: "scale(1.05)",
+                  transition: "0.3s",
+                }}
+              >
+                <Link
+                  as={NavLink}
+                  to="/countries-and-cities"
+                  fontSize="lg"
+                  fontWeight="bold"
+                >
+                  Explore the E.U. Countries and Cities
+                  <Icon as={FaArrowRight} ml={2} />
+                </Link>
+              </Box>
+            </SimpleGrid>
+          </VStack>
+        </Box>
+      </Box>
+      <Footer />
     </Box>
   );
 };
