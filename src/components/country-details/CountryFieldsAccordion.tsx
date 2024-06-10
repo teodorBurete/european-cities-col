@@ -34,15 +34,6 @@ const CountryFieldsAccordion: React.FC<CountryFieldsAccordionProps> = (
 
   const accordionItem2 = {
     title: "Economic Indicators",
-    // fields: {
-    //   GDP: ecIndicators.gdp,
-    //   "Minimum Wage": ecIndicators.minimum_wage,
-    //   "Inflation Rate": ecIndicators.inflation,
-    //   "GDP Growth Rate": ecIndicators.gdp_growth_rate,
-    //   "Unemployment Rate": ecIndicators.unemployment_rate,
-    //   CPI: ecIndicators.cpi,
-    //   "Home Ownership Rate": ecIndicators.home_ownership_rate,
-    // }
     fields: ecIndicators,
   };
 

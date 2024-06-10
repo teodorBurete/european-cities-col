@@ -7,77 +7,79 @@ import {
   List,
   ListItem,
 } from "@chakra-ui/react";
-import { ICountry } from "../../api/service/model/country/ICountry";
-import CountryServiceImpl from "../../api/service/CountryService";
 import { NavLink } from "react-router-dom";
+import { ICity } from "../../api/service/model/city/ICity";
+import CityServiceImpl, { ICityService } from "../../api/service/CityService";
 
-const countryService = new CountryServiceImpl();
+const cityService: ICityService = new CityServiceImpl();
 
-const SearchBar = () => {
-  const [countriesList, setCountriesList] = useState([] as ICountry[]);
+interface SearchBarProps {
+  url: string;
+}
+
+const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
+  const { url } = props;
+  const [citiesList, setCitiesList] = useState([] as ICity[]);
   const [query, setQuery] = useState("" as string);
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      if (query.length >= 3) {
+    const fetchCities = async () => {
+      if (query.length >= 2) {
         try {
-          const response = await countryService.searchCountryByName(query);
-          setCountriesList(response.data);
+          const response = await cityService.searchCityByName(query);
+          setCitiesList(response.data);
         } catch (error) {
-          console.error("Error fetching countries:", error);
+          console.error("Error fetching cities:", error);
         }
       } else {
-        setCountriesList([]);
+        setCitiesList([]);
       }
     };
 
-    fetchCountries();
+    fetchCities();
   }, [query]);
 
   return (
-    <>
-      <Box position="relative">
-        <Input
-          placeholder="Search for a country"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-      </Box>
-      <Box zIndex={1}>
-        {countriesList.length > 0 && (
-          <List
-            mt={2}
-            position="absolute"
-            width="100%"
-            maxHeight="200px"
-            overflowY="auto"
-            border="1px solid"
-            borderColor="gray.200"
-            borderRadius="md"
-            bg="white"
-            zIndex={1}
-          >
-            {countriesList.map((country) => (
-              <LinkBox
-                as="article"
-                key={country.id}
-                _hover={{ bg: "gray.100" }}
-              >
+    <Box position="relative">
+      <Input
+        placeholder="Search for a city"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      {citiesList.length > 0 && (
+        <Box
+          mt={2}
+          position="absolute"
+          width="100%"
+          maxHeight="200px"
+          overflowY="auto"
+          border="1px solid"
+          borderColor="gray.200"
+          borderRadius="md"
+          bg="white"
+          zIndex={1}
+        >
+          <List>
+            {citiesList.map((city) => (
+              <LinkBox as="article" key={city.id} _hover={{ bg: "gray.100" }}>
                 <ListItem
                   padding={2}
                   borderBottom="1px solid"
                   borderColor="gray.200"
                 >
-                  <LinkOverlay as={NavLink} to={`/cost-of-living/cities/1`}>
-                    {country.impact_country}
+                  <LinkOverlay
+                    as={NavLink}
+                    to={`${url}/${city.id}`}
+                  >
+                    {city.name}
                   </LinkOverlay>
                 </ListItem>
               </LinkBox>
             ))}
           </List>
-        )}
-      </Box>
-    </>
+        </Box>
+      )}
+    </Box>
   );
 };
 

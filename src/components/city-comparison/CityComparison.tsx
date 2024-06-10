@@ -109,7 +109,7 @@ const CityComparison: React.FC = () => {
       <Heading as="h1" size="xl" mb={2}>
         Compare Cities
       </Heading>
-      <SearchBar />
+      <SearchBar url="" />
       <Box my={4}>
         <Table variant="simple">
           <Thead>

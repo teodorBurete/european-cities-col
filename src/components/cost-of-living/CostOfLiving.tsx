@@ -4,11 +4,38 @@ import NavBar from "../commons/NavBar";
 import Footer from "../commons/Footer";
 import SearchBar from "./SearchBar";
 import MapComponent from "../commons/MapComponent";
-import testLocations from "../../constants/test-objects/test-locations.json";
+import { useEffect, useState } from "react";
+import { ICity } from "../../api/service/model/city/ICity";
+import CityServiceImpl, { ICityService } from "../../api/service/CityService";
+import formatCitiesToLocations from "../../utilities/functions/formatCitiesToLocations";
+
+const cityService: ICityService = new CityServiceImpl();
 
 const CostOfLiving = () => {
+  const [citiesList, setCitiesList] = useState<ICity[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchCity = async () => {
+      const response = await cityService.getCities();
+      if (!isMounted) return;
+
+      if (response.data) {
+        setCitiesList(response.data);
+      } else {
+        console.error("City not found");
+        setCitiesList([]);
+      }
+      console.log(response);
+    };
+    fetchCity();
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
-    <Flex direction="column" paddingX={150} h={"100vh"}>
+    <Flex direction="column" paddingX={150} h={"140vh"}>
       <Header />
       <NavBar />
       <Heading as="h1" size="2xl" mb={6} color="blue.700">
@@ -22,13 +49,13 @@ const CostOfLiving = () => {
       <Text fontSize="lg" mb={6} color="blue.700">
         Search for your city here:
       </Text>
-      <SearchBar />
-      <Text fontSize="lg" mt={6} mb={10}color="blue.700">
+      <SearchBar url="/cost-of-living/cities" />
+      <Text fontSize="lg" mt={6} mb={10} color="blue.700">
         ...or find it on the map.
       </Text>
       <MapComponent
         zoom={5}
-        cities={testLocations}
+        cities={formatCitiesToLocations(citiesList)}
         height="700px"
         width="1200px"
         center={[48, 11]}

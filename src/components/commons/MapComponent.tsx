@@ -14,14 +14,15 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-interface Location {
+export interface ILocation {
+  id: number;
   name: string;
   lat: number;
   lng: number;
 }
 
 interface MapComponentProps {
-  cities: Location[];
+  cities: ILocation[];
   zoom?: number;
   height?: string;
   width?: string;
@@ -51,7 +52,7 @@ const MapComponent: React.FC<MapComponentProps> = (
             position={[city.lat, city.lng]}
             eventHandlers={{
               click: () => {
-                navigate(`/city-prices/${city.name}`);
+                navigate(`/cities/${city.id}`);
               },
             }}
           >

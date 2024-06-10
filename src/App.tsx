@@ -22,7 +22,7 @@ export const App = () => (
         />
         <Route path="/cost-of-living" element={<CostOfLiving />} />
         <Route path="/cost-of-living/comparison" element={<CityComparison />} />
-        <Route path="/cost-of-living/cities/1" element={<CityPrices />} />
+        <Route path="/cost-of-living/cities/:cityId" element={<CityPrices />} />
         <Route path="/countries/:countryId" element={<CountryDetail />} />
         <Route path="/cities/:cityId" element={<CityDetail />} />
         <Route path="*" element={<NotFound />} />

@@ -14,7 +14,7 @@ import MapComponent from "../commons/MapComponent";
 import CountryCities from "./CountryCities";
 import CountryAbout from "./CountryAbout";
 import countryAboutText from "../../constants/country-details-page/country-about-test.json";
-import testLocations from "../../constants/test-objects/test-locations.json";
+import formatCitiesToLocations from "../../utilities/functions/formatCitiesToLocations";
 
 const countryService: ICountryService = new CountryServiceImpl();
 
@@ -67,11 +67,14 @@ const CountryDetail = () => {
             paddingY={4}
           >
             <Box>
-              <CountryFieldsAccordion
-                country={country}
-              />
+              <CountryFieldsAccordion country={country} />
             </Box>
-            <MapComponent cities={testLocations} />
+            <MapComponent
+              cities={formatCitiesToLocations(country.cities)}
+              zoom={6}
+              center={[45.94, 24.95]}
+              height="415px"
+            />
           </Box>
           <CountryCities cities={country.cities} />
           <CountryAbout aboutText={countryAboutText.text} />

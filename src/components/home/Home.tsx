@@ -8,6 +8,7 @@ import {
   SimpleGrid,
   Link,
   Icon,
+  HStack,
 } from "@chakra-ui/react";
 import NavBar from "../commons/NavBar";
 import Header from "../commons/Header";
@@ -21,24 +22,24 @@ const Home = () => {
       name: "Berlin",
       description:
         "The capital city of Germany, known for its vibrant culture and history.",
-      image: "path_to_berlin_image",
+      image: `${process.env.PUBLIC_URL}/popular-cities/berlin.png`,
     },
     {
       name: "Paris",
       description:
         "The capital of France, famous for its art, fashion, and landmarks.",
-      image: "path_to_paris_image",
-    },
+        image: `${process.env.PUBLIC_URL}/popular-cities/paris.png`,
+      },
     {
       name: "Madrid",
       description:
         "The central capital of Spain, renowned for its royal palace and museums.",
-      image: "path_to_madrid_image",
-    },
+        image: `${process.env.PUBLIC_URL}/popular-cities/madrid.png`,
+      },
   ];
 
   return (
-    <Box >
+    <Box>
       <Box paddingX={150}>
         <Header />
         <NavBar />
@@ -61,22 +62,23 @@ const Home = () => {
             <Heading as="h2" size="xl" color="blue.700">
               General Information about the European Union
             </Heading>
-            <Image
-              src={""}
-              alt="European Union Flag"
-              boxSize="300px"
-              objectFit="contain"
-              mb={6}
-            />
-            <Text fontSize="md" maxW="800px">
-              The European Union (EU) is a political and economic union of 27
-              member states that are located primarily in Europe. Its members
-              have a combined area of 4,233,255.3 km² and an estimated total
-              population of about 447 million. The EU has developed an internal
-              single market through a standardized system of laws that apply in
-              all member states in those matters, and only those matters, where
-              members have agreed to act as one.
-            </Text>
+            <HStack>
+              <Text fontSize="md" maxW="800px">
+                The European Union (EU) is a political and economic union of 27
+                member states that are located primarily in Europe. Its members
+                have a combined area of 4,233,255.3 km² and an estimated total
+                population of about 447 million. The EU has developed an
+                internal single market through a standardized system of laws
+                that apply in all member states in those matters, and only those
+                matters, where members have agreed to act as one.
+              </Text>
+              <Image
+                src={`${process.env.PUBLIC_URL}/imgs/eu_flag.svg`}
+                alt="European Union Flag"
+                boxSize="400px"
+                objectFit="contain"
+              />
+            </HStack>
           </VStack>
           <Divider mt={10} mb={10} />
           {/* Popular Cities Section */}
