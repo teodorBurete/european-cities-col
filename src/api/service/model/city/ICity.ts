@@ -5,8 +5,8 @@ export interface ICity {
   population: number;
   area: number;
   annualPopulationChange: number;
-  rankByPopulation: number;
-  gdp: number;
+  rankByPopulation?: number;
+  gdp?: number;
   capital: boolean;
   latitude:number;
   longitude:number;
