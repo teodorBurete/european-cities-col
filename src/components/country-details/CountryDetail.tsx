@@ -72,8 +72,9 @@ const CountryDetail = () => {
             <MapComponent
               cities={formatCitiesToLocations(country.cities)}
               zoom={6}
-              center={[45.94, 24.95]}
+              center={[country.cities[0].latitude,country.cities[0].longitude]}
               height="415px"
+              markerUrl={`/cities/`}
             />
           </Box>
           <CountryCities cities={country.cities} />

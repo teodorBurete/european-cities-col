@@ -27,12 +27,13 @@ interface MapComponentProps {
   height?: string;
   width?: string;
   center?: [number, number];
+  markerUrl?:string;
 }
 
 const MapComponent: React.FC<MapComponentProps> = (
   props: MapComponentProps
 ) => {
-  const { cities, zoom, height, width, center } = props;
+  const { cities, zoom, height, width, center,markerUrl } = props;
   const navigate = useNavigate();
 
   return (
@@ -51,8 +52,8 @@ const MapComponent: React.FC<MapComponentProps> = (
             key={index}
             position={[city.lat, city.lng]}
             eventHandlers={{
-              click: () => {
-                navigate(`/cities/${city.id}`);
+              click: () => { markerUrl ? 
+                navigate(`${markerUrl}${city.id}`) : navigate(``)
               },
             }}
           >

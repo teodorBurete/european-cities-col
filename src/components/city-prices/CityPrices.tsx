@@ -41,7 +41,7 @@ const CityPrices = () => {
       <NavBar />
       {cityPriceResponse ? (
         <>
-          <CityPricesHeader cityName={"Bucharest"} />
+          <CityPricesHeader cityName={cityPriceResponse.city.name} />
           <PricesTable cityPrices={cityPriceResponse} />
         </>
       ) : (

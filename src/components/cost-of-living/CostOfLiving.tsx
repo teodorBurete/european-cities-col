@@ -59,6 +59,7 @@ const CostOfLiving = () => {
         height="700px"
         width="1200px"
         center={[48, 11]}
+        markerUrl={`/cost-of-living/cities/`}
       />
 
       <Footer />

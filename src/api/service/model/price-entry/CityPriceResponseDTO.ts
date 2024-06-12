@@ -3,5 +3,5 @@ import { IPriceEntryCategory } from "./IPriceEntryCategory";
 
 export interface CityPriceResponseDTO {
   city: ICity;
-  categories: IPriceEntryCategory;
+  categories: IPriceEntryCategory[];
 }
