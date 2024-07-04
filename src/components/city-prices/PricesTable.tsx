@@ -10,7 +10,6 @@ export interface PricesTableProps {
 
 const PricesTable: React.FC<PricesTableProps> = (props:PricesTableProps) => {
   const {cityPrices}=props
-
   const [selectedCurrency, setSelectedCurrency] = useState('EUR');
   const [exchangeRates, setExchangeRates] = useState<{ [key: string]: number }>({});
   const [loading, setLoading] = useState(true);

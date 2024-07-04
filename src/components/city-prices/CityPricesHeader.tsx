@@ -1,14 +1,16 @@
-import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import SearchBar from "../cost-of-living/SearchBar";
 
 interface CityPricesHeaderProps {
   cityName: string;
+  onCitySelect: (cityId: number) => void;
+
 }
 
 const CityPricesHeader: React.FC<CityPricesHeaderProps> = (
   props: CityPricesHeaderProps
 ) => {
-  const { cityName } = props;
+  const { cityName,onCitySelect } = props;
   return (
     <Box mb={4}>
       <Heading as="h1" size="xl" mb={2} color="blue.700">
@@ -18,7 +20,7 @@ const CityPricesHeader: React.FC<CityPricesHeaderProps> = (
         <Text fontSize="lg" mr={2}>
           Compare {cityName} with:
         </Text>
-        <SearchBar url="" />
+        <SearchBar onCitySelect={onCitySelect} />
       </Flex>
     </Box>
   );

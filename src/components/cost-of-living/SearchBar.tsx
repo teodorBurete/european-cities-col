@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
-import {
-  Box,
-  Input,
-  LinkBox,
-  LinkOverlay,
-  List,
-  ListItem,
-} from "@chakra-ui/react";
-import { NavLink } from "react-router-dom";
+import { Box, Input, LinkBox, Text, List, ListItem } from "@chakra-ui/react";
 import { ICity } from "../../api/service/model/city/ICity";
 import CityServiceImpl, { ICityService } from "../../api/service/CityService";
 
 const cityService: ICityService = new CityServiceImpl();
 
 interface SearchBarProps {
-  url: string;
+  onCitySelect: (cityId: number) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
-  const { url } = props;
+  const { onCitySelect } = props;
   const [citiesList, setCitiesList] = useState([] as ICity[]);
   const [query, setQuery] = useState("" as string);
 
@@ -61,18 +53,18 @@ const SearchBar: React.FC<SearchBarProps> = (props: SearchBarProps) => {
         >
           <List>
             {citiesList.map((city) => (
-              <LinkBox as="article" key={city.id} _hover={{ bg: "gray.100" }}>
+              <LinkBox
+                as="article"
+                key={city.id}
+                _hover={{ bg: "gray.100" }}
+                onClick={() => onCitySelect(city.id)}
+              >
                 <ListItem
                   padding={2}
                   borderBottom="1px solid"
                   borderColor="gray.200"
                 >
-                  <LinkOverlay
-                    as={NavLink}
-                    to={`${url}/${city.id}`}
-                  >
-                    {city.name}
-                  </LinkOverlay>
+                  <Text>{city.name}</Text>
                 </ListItem>
               </LinkBox>
             ))}

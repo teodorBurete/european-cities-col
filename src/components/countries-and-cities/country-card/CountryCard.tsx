@@ -29,7 +29,7 @@ const CountryCard: React.FC<CountryCardProps> = (props: CountryCardProps) => {
         <Heading as="h3" size="md" mb={4} color="blue.600">
           <HStack spacing={4}>
             <Image
-              src={`${process.env.PUBLIC_URL}/flags/${country.iso_a2}.png`}
+              src={`${process.env.PUBLIC_URL}/imgs/flags/${country.iso_a2}.png`}
               alt={`${country.impact_country} flag`}
               boxSize="35px"
               rounded={100}

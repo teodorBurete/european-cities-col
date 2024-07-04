@@ -13,7 +13,6 @@ import Footer from "../commons/Footer";
 import MapComponent from "../commons/MapComponent";
 import CountryCities from "./CountryCities";
 import CountryAbout from "./CountryAbout";
-import countryAboutText from "../../constants/country-details-page/country-about-test.json";
 import formatCitiesToLocations from "../../utilities/functions/formatCitiesToLocations";
 
 const countryService: ICountryService = new CountryServiceImpl();
@@ -58,7 +57,7 @@ const CountryDetail = () => {
         <Box paddingY={4}>
           <CountryHeader
             name={country.impact_country}
-            flagUrl="https://www.worldometers.info//img/flags/small/tn_ro-flag.gif"
+            flagUrl={`${process.env.PUBLIC_URL}/imgs/flags/${country.iso_a2}.png`}
           />
           <Box
             display="grid"
@@ -78,7 +77,7 @@ const CountryDetail = () => {
             />
           </Box>
           <CountryCities cities={country.cities} />
-          <CountryAbout aboutText={countryAboutText.text} />
+          <CountryAbout countryCode={country.iso_a2} />
         </Box>
       ) : (
         <Text>Country not found</Text>

@@ -1,18 +1,31 @@
 // components/LogoSection.tsx
-import React from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import React from "react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 
 const LogoSection: React.FC = () => {
   return (
-    <Flex alignItems="center" justifyContent="space-between" padding="1rem" paddingX={20}>
-      <Box>
-        <Box as="span" fontWeight="bold" fontSize="1.5rem">
-          Logo Placeholder
-        </Box>
+    <Flex
+      alignItems="center"
+      justifyContent={"flex-start"}
+      padding="1rem"
+    >
+      <Box mr="30px">
+        <Image
+          src={`${process.env.PUBLIC_URL}/imgs/logos/ase_logo.png`}
+          alt="European Union Flag"
+          boxSize="100px"
+          objectFit="contain"
+        />
       </Box>
       <Box>
-        {/* Space for additional components */}
+        <Image
+          src={`${process.env.PUBLIC_URL}/imgs/flags/eu_flag.svg`}
+          alt="European Union Flag"
+          boxSize="100px"
+          objectFit="contain"
+        />
       </Box>
+      <Box>{/* Space for additional components */}</Box>
     </Flex>
   );
 };

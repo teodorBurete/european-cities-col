@@ -1,0 +1,19 @@
+{
+  "cities": [
+    {
+      "name": "Berlin",
+      "description": "The capital city of Germany, known for its vibrant culture and history.",
+      "cityId":53
+    },
+    {
+      "name": "Paris",
+      "description": "The capital of France, famous for its art, fashion, and landmarks.",
+      "cityId":71
+    },
+    {
+      "name": "Madrid",
+      "description": "The central capital of Spain, renowned for its royal palace and museums.",
+      "cityId":59
+    }
+  ]
+}

@@ -8,11 +8,14 @@ import { useEffect, useState } from "react";
 import { ICity } from "../../api/service/model/city/ICity";
 import CityServiceImpl, { ICityService } from "../../api/service/CityService";
 import formatCitiesToLocations from "../../utilities/functions/formatCitiesToLocations";
+import { useNavigate } from "react-router-dom";
 
 const cityService: ICityService = new CityServiceImpl();
 
 const CostOfLiving = () => {
   const [citiesList, setCitiesList] = useState<ICity[]>([]);
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     let isMounted = true;
@@ -34,6 +37,10 @@ const CostOfLiving = () => {
     };
   }, []);
 
+  const handleCitySelect = (selectedCityId: number) => {
+    navigate(`/cost-of-living/cities/${selectedCityId}`);
+  };
+
   return (
     <Flex direction="column" paddingX={150} h={"140vh"}>
       <Header />
@@ -49,7 +56,7 @@ const CostOfLiving = () => {
       <Text fontSize="lg" mb={6} color="blue.700">
         Search for your city here:
       </Text>
-      <SearchBar url="/cost-of-living/cities" />
+      <SearchBar onCitySelect={handleCitySelect} />
       <Text fontSize="lg" mt={6} mb={10} color="blue.700">
         ...or find it on the map.
       </Text>

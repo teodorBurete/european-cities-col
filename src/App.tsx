@@ -25,6 +25,7 @@ export const App = () => (
         <Route path="/cost-of-living/cities/:cityId" element={<CityPrices />} />
         <Route path="/countries/:countryId" element={<CountryDetail />} />
         <Route path="/cities/:cityId" element={<CityDetail />} />
+        <Route path="/compare/:cityId1/:cityId2" element={<CityComparison />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
