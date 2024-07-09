@@ -10,6 +10,7 @@ import InfoTable from "../country-details/InfoTable";
 import MapComponent from "../commons/MapComponent";
 import CityAbout from "./CityAbout";
 import aboutCity from "../../constants/city-details-page/about.json";
+import citiesAbout from "../../constants/about-text/cities/cities-about.json";
 import Footer from "../commons/Footer";
 import NotFound from "../commons/NotFound";
 import formatCitiesToLocations from "../../utilities/functions/formatCitiesToLocations";
@@ -24,6 +25,7 @@ const CityDetail = () => {
   const [loadingItems, setLoadingItems] = useState<boolean>(true);
   const [city, setCity] = useState<ICity | null>(null);
   const navigate = useNavigate();
+  const aboutText = citiesAbout[cityId as keyof typeof citiesAbout];
 
   useEffect(() => {
     let isMounted = true;
@@ -31,6 +33,7 @@ const CityDetail = () => {
       setLoadingItems(true);
 
       const response = await cityService.getCityById(cityId);
+
       if (!isMounted) return;
 
       if (response.data) {
@@ -54,14 +57,16 @@ const CityDetail = () => {
         Population: formatPopulation(city.population),
         "Annual Population Change": `${city.annualPopulationChange} %`,
         Area: `${city.area} km²`,
-        GDP: city.gdp ? `${city.gdp}B €` : '-',
-        "Rank by Population in the E.U.": city.rankByPopulation ? city.rankByPopulation : '-',
+        GDP: city.gdp ? `${city.gdp}B €` : "-",
+        "Rank by Population in the E.U.": city.rankByPopulation
+          ? city.rankByPopulation
+          : "-",
       }
     : undefined;
 
-    let handleNavigation;
+  let handleNavigation;
   if (city) {
-     handleNavigation = () => {
+    handleNavigation = () => {
       navigate(`/cost-of-living/cities/${city.id}`);
     };
   }
@@ -88,7 +93,7 @@ const CityDetail = () => {
               </GridItem>
               <GridItem colSpan={1} bg="">
                 <Box ml={4} height="100%">
-                  <CityAbout aboutText={aboutCity.about} />
+                  <CityAbout aboutText={aboutText} />
                 </Box>
               </GridItem>
               <GridItem colSpan={1} bg="">
@@ -112,11 +117,7 @@ const CityDetail = () => {
                 transition: "0.3s",
               }}
             >
-              <Link
-                onClick={handleNavigation}
-                fontSize="lg"
-                fontWeight="bold"
-              >
+              <Link onClick={handleNavigation} fontSize="lg" fontWeight="bold">
                 Explore Cost of Living
                 <Icon as={FaArrowRight} ml={2} />
               </Link>
